@@ -1,12 +1,12 @@
 # Lite Avalonia Visual Studio Extension
 
-This fork preserves the legacy Avalonia Visual Studio Extension, forked at 7bf4941.
+This fork preserves the legacy Avalonia Visual Studio Extension, forked at `7bf4941`, providing only basic features.
 
-> For the latest ground-breaking features, use the official AvaloniaVS extension.
+> For the latest ground-breaking features, use the official [AvaloniaVS extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS).
 >
-> This fork is intended for those who need a simple visual designer for Avalonia. For instance, those creating simple apps or sandboxing Avalonia
+> This fork is intended for those who need a simple visual designer for Avalonia. For instance, those creating simple apps or sandboxing Avalonia. We encourage you to support the official tooling.
 
-[![2022 marketplace](https://img.shields.io/visual-studio-marketplace/v/AvaloniaTeam.AvaloniaVS.svg?label=2022-Marketplace)](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS)
+[![2022 marketplace](https://img.shields.io/visual-studio-marketplace/v/SuessLabs.Avalonia-Lite-VS.svg?label=2022-Marketplace)](https://marketplace.visualstudio.com/items?itemName=SuessLabs.Avalonia-Lite-VS)
 
 ## Avalonia for Visual Studio
 
