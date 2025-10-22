@@ -7,7 +7,7 @@ pool:
   vmImage: 'windows-2022'
 
 variables:
-  solution: 'AvaloniaVS.sln'
+  solution: 'Legacy-AvaloniaVSExt'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
