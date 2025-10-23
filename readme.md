@@ -1,4 +1,4 @@
-# Legacy Avalonia AXAML Viewer for Visual Studio Extension
+# Legacy Avalonia AXAML Viewer Visual Studio Extension
 
 _This project is an independent derivative of Avalonia technology and is not endorsed by AvaloniaUI OÜ._ The fork preserves the legacy Avalonia Visual Studio Extension at git hash, `7bf4941`, providing only basic features.
 
