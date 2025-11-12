@@ -2,6 +2,8 @@
 
 Yes, the same Avalonia GUI Previewer and syntax highlighter that you've grown to love under the MIT license.
 
+<center><img width="495" height="523" alt="image" src="https://github.com/user-attachments/assets/ad3d429d-8d64-4d75-894c-f7487b830ca5" /></center>
+
 The fork preserves the legacy Avalonia Visual Studio Extension at git hash, `7bf4941`, providing only basic features.
 
 > For the latest ground-breaking features, use the official [AvaloniaVS extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS).
