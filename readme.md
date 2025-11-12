@@ -22,9 +22,9 @@ If you run into the following error message, this is normal. It is caused by you
 > ```
 
 1. Uninstall the other Avalonia extension, keeping this one.
-2. Clean your project
-3. Relaunch Visual Studio
-4. Rebuild your project
+2. **Clean** your project and **close the open tabs**
+3. **Relaunch** Visual Studio
+4. **Rebuild** your project
 
 ## Avalonia for Visual Studio
 
