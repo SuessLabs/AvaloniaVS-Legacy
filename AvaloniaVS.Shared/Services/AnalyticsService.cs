@@ -18,7 +18,10 @@ namespace AvaloniaVS.Shared.Services
         // Constants
         private const string DefaultFolderName = ".avalonia_ide";
         private const string RecordFilePrefix = "avalonia_ide";
-        private const string DestinationUrl = "https://av-build-tel-api-v1.avaloniaui.net/api/ide/usage";           
+
+        // Disabled telemetry endpoint at this time
+        // private const string DestinationUrl = "https://av-build-tel-api-v1.avaloniaui.net/api/ide/usage";
+        private const string DestinationUrl = "https://api.xenoinc.com/v1/ide/usage";
 
         // Dependencies
         private readonly DTE _dte;
@@ -50,12 +53,11 @@ namespace AvaloniaVS.Shared.Services
                 return;
 
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                       
 
             var payload = AvaloniaExtentionLoadedAnalyticsPayload.Initialise(
                 _uniqueIdentifier,
                 _dte.Edition,
-                await GetVersionAsync());           
+                await GetVersionAsync());
 
             _ = ThreadHelper.JoinableTaskFactory.RunAsync(async () =>
             {
@@ -68,7 +70,7 @@ namespace AvaloniaVS.Shared.Services
                 {
                     Debug.WriteLine($"Failed to SweepAndSendAsync: {ex}");
                 }
-            });           
+            });
         }
 
         private async Task<string> GetVersionAsync()
@@ -171,7 +173,7 @@ namespace AvaloniaVS.Shared.Services
 
             return false;
         }
-             
+
         private void WriteAnalytics(AvaloniaExtentionLoadedAnalyticsPayload payload)
         {
             var dataPath = Path.Combine(targetDir, $"{RecordFilePrefix}_{payload.RecordId}");
@@ -182,7 +184,7 @@ namespace AvaloniaVS.Shared.Services
 
                 File.WriteAllBytes(dataPath, data);
             }
-        }    
+        }
     }
 
     public class AvaloniaExtentionLoadedAnalyticsPayload
@@ -210,7 +212,7 @@ namespace AvaloniaVS.Shared.Services
             result.Machine = machine;
             result.Ide = Ide.Vs;
             result.Version = vsVersion;
-            result.Edition = vsEdition;            
+            result.Edition = vsEdition;
             return result;
         }
 
@@ -281,7 +283,7 @@ namespace AvaloniaVS.Shared.Services
             }
 
             return result;
-        }        
+        }
     }
 
     public enum Ide
@@ -294,7 +296,7 @@ namespace AvaloniaVS.Shared.Services
     }
 
     /// <summary>
-    /// Provides a reusable mechanism to retrieve or generate a persistent <see cref="Guid"/> 
+    /// Provides a reusable mechanism to retrieve or generate a persistent <see cref="Guid"/>
     /// stored in the user’s Application Data folder.
     /// </summary>
     internal static class UniqueIdentifierProvider

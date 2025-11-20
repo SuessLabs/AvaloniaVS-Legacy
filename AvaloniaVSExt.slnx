@@ -25,7 +25,7 @@
     <Project Path="tests/TestAssembly2/TestAssembly2.csproj" />
   </Folder>
   <Project Path="AvaloniaVS.Shared/AvaloniaVS.Shared.shproj" />
-  <Project Path="AvaloniaVS.VS2022/AvaloniaVS.VS2022.csproj">
+  <Project Path="AvaloniaVS.VS2022/AvaloniaVS.VS2022.csproj" Id="1029ec08-7b2e-4018-b20d-e85ca58deb59">
     <Platform Solution="*|arm64" Project="arm64" />
     <Platform Solution="*|x86" Project="x86" />
   </Project>
