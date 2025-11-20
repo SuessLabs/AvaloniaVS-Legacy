@@ -12,9 +12,9 @@ $msBuildPath = "$VCToolsInstallDir\MSBuild\Current\Bin\msbuild.exe"
 Write-Host "msBuildPath: $msBuildPath"
 
 Write-Host "Cleaning..."
-& $msBuildPath -t:Clean Legacy-AvaloniaVSExt.sln
+& $msBuildPath -t:Clean AvaloniaVSExt.sln
 
 Write-Host "Building..."
 & $msBuildPath /restore `
-               Legacy-AvaloniaVSExt.sln `
+               AvaloniaVSExt.sln `
                /p:Configuration=Release
