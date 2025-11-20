@@ -1,0 +1,32 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="arm64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/CompletionEngine/">
+    <Project Path="CompletionEngine/Avalonia.Ide.CompletionEngine.DnlibMetadataProvider/Avalonia.Ide.CompletionEngine.DnlibMetadataProvider.csproj" />
+    <Project Path="CompletionEngine/Avalonia.Ide.CompletionEngine/Avalonia.Ide.CompletionEngine.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="azure-pipelines.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="Props/NetAnalyzers.props" />
+    <File Path="Props/NullableEnable.props" />
+    <File Path="Props/TrimmingEnable.props" />
+  </Folder>
+  <Folder Name="/templates/">
+    <Project Path="templates/ProjectTemplatesDownloader/ProjectTemplatesDownloader.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CompletionEngineTests/CompletionEngineTests.csproj" />
+    <Project Path="tests/TestAssembly1/TestAssembly1.csproj" />
+    <Project Path="tests/TestAssembly2/TestAssembly2.csproj" />
+  </Folder>
+  <Project Path="AvaloniaVS.Shared/AvaloniaVS.Shared.shproj" />
+  <Project Path="AvaloniaVS.VS2022/AvaloniaVS.VS2022.csproj">
+    <Platform Solution="*|arm64" Project="arm64" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+</Solution>
