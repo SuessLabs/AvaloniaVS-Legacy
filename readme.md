@@ -1,12 +1,32 @@
 # Legacy Avalonia AXAML Viewer Visual Studio Extension
 
-_This project is an independent derivative of Avalonia technology and is not endorsed by AvaloniaUI OÜ._ The fork preserves the legacy Avalonia Visual Studio Extension at git hash, `7bf4941`, providing only basic features.
+Yes, the same Avalonia GUI Previewer and syntax highlighter that you've grown to love under the MIT license.
+
+<center><img width="495" height="523" alt="image" src="https://github.com/user-attachments/assets/ad3d429d-8d64-4d75-894c-f7487b830ca5" /></center>
+
+The fork preserves the legacy Avalonia Visual Studio Extension at git hash, `7bf4941`, providing only basic features.
 
 > For the latest ground-breaking features, use the official [AvaloniaVS extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS).
 >
 > This fork is intended for those who need a simple visual designer for Avalonia. For instance, those creating simple apps or sandboxing Avalonia. _**We encourage you to support the official tooling.**_
+> 
+> _This project is an independent derivative of Avalonia technology and is not endorsed by AvaloniaUI OÜ._
 
 [![2022 marketplace](https://img.shields.io/visual-studio-marketplace/v/SuessLabs.Avalonia-Lite-VS.svg?label=2022-Marketplace)](https://marketplace.visualstudio.com/items?itemName=SuessLabs.Avalonia-Lite-VS)
+
+## Extension Upgrading
+
+If you run into the following error message, this is normal. It is caused by your project's `.SUO` file still referencing the other extension, and we're using a new UUID to stay separate.
+
+> ```txt
+> An error occurred in 'MyProject' while attempting to open 'ShellWindow.axaml'
+> System.ArgumentException: Failed to get the editor factory manager for 6d5344a2-2fcd-49de-a09d-6a14fd1b1224.
+> ```
+
+1. Uninstall the other Avalonia extension, keeping this one.
+2. **Clean** your project and **close the open tabs**
+3. **Relaunch** Visual Studio
+4. **Rebuild** your project
 
 ## Avalonia for Visual Studio
 
