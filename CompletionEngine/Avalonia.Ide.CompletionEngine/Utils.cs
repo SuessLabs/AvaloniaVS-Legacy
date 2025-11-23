@@ -27,6 +27,7 @@ internal static class Utils
             {
                 reader.Read();
             }
+
             if (!reader.MoveToFirstAttribute())
                 return false;
             do
@@ -83,6 +84,7 @@ internal static class Utils
                 break;
             }
         }
+
         return found
             ? rv
             : default;
@@ -102,6 +104,7 @@ internal static class Utils
                 return true;
             }
         }
+
         value = default;
         return false;
     }
@@ -115,6 +118,7 @@ internal static class Utils
                 return item;
             }
         }
+
         return default;
     }
 

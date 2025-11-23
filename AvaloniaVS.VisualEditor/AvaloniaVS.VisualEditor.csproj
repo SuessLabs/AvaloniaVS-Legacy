@@ -18,8 +18,8 @@
     <ProjectGuid>{1029EC08-7B2E-4018-B20D-E85CA58DEB59}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AvaloniaVS.VS2022</RootNamespace>
-    <AssemblyName>AvaloniaVS.VS2022</AssemblyName>
+    <RootNamespace>AvaloniaVS.VisualEditor</RootNamespace>
+    <AssemblyName>AvaloniaVS.VisualEditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <GeneratePkgDefFile>true</GeneratePkgDefFile>
     <IncludeAssemblyInVSIXContainer>true</IncludeAssemblyInVSIXContainer>

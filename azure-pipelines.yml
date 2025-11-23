@@ -45,9 +45,12 @@ steps:
 - task: CopyFiles@2
   inputs:
     Contents: |
-      AvaloniaVS.VS2022\bin\Release\AvaloniaVS.VS2022.vsix
-      AvaloniaVS.VS2022\bin\Release\publishManifest.json
-      AvaloniaVS.VS2022\bin\Release\overview.md
+      output\Release\AvaloniaVS.VisualEditor.vsix
+      output\Release\publishManifest.json
+      output\Release\overview.md
+#     AvaloniaVS.VisualEditor\bin\Release\AvaloniaVS.VisualEditor.vsix
+#     AvaloniaVS.VisualEditor\bin\Release\publishManifest.json
+#     AvaloniaVS.VisualEditor\bin\Release\overview.md
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
   condition: succeeded()
 

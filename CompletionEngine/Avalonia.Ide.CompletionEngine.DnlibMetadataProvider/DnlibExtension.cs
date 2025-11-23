@@ -64,7 +64,7 @@ internal static class DnlibExtension
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsPublic(this MethodDef methodDef)
-                => methodDef?.IsPublic == true;
+        => methodDef?.IsPublic == true;
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static bool IsPublicOrInternal(this MethodDef methodDef)
@@ -73,10 +73,11 @@ internal static class DnlibExtension
     public static IEnumerable<string> GetVisibleTo(this AssemblyDef assemblyDef)
     {
         var result = assemblyDef.CustomAttributes
-                 .Where(att => att.TypeFullName == "System.Runtime.CompilerServices.InternalsVisibleToAttribute")
-                 .Select(att => att.ConstructorArguments[0].Value.ToString())
-                 .Where(val => val is not null)
-                 .ToArray();
+            .Where(att => att.TypeFullName == "System.Runtime.CompilerServices.InternalsVisibleToAttribute")
+            .Select(att => att.ConstructorArguments[0].Value.ToString())
+            .Where(val => val is not null)
+            .ToArray();
+
         return result!;
     }
 }

@@ -20,8 +20,11 @@ internal class DnlibMetadataProviderSession : IMetadataReaderSession
     private readonly ModuleContext _modCtx;
     private readonly Dictionary<ITypeDefOrRef, ITypeDefOrRef> _baseTypes = new Dictionary<ITypeDefOrRef, ITypeDefOrRef>();
     private readonly Dictionary<ITypeDefOrRef, TypeDef> _baseTypeDefs = new Dictionary<ITypeDefOrRef, TypeDef>();
-    public string? TargetAssemblyName { get; private set; }
-    public IReadOnlyCollection<IAssemblyInformation> Assemblies { get; }
+  
+  public string? TargetAssemblyName { get; private set; }
+  
+  public IReadOnlyCollection<IAssemblyInformation> Assemblies { get; }
+
     public DnlibMetadataProviderSession(string[] directoryPath)
     {
         var asmResolver = new AssemblyResolver()
@@ -29,10 +32,12 @@ internal class DnlibMetadataProviderSession : IMetadataReaderSession
             EnableTypeDefCache = false,
             UseGAC = false
         };
+
         var resolver = new Resolver(asmResolver)
         {
             ProjectWinMDRefs = false
         };
+
         _modCtx = new ModuleContext(asmResolver, resolver);
         asmResolver.DefaultModuleContext = _modCtx;
 
@@ -52,36 +57,23 @@ internal class DnlibMetadataProviderSession : IMetadataReaderSession
     public TypeDef? GetTypeDef(ITypeDefOrRef type)
     {
         if (type == null)
-        {
             return null;
-        }
 
         if (type is TypeDef typeDef)
-        {
             return typeDef;
-        }
 
         if (_baseTypeDefs.TryGetValue(type, out var baseType))
-        {
             return baseType;
-        }
         else
-        {
             return _baseTypeDefs[type] = type.ResolveTypeDef();
-        }
     }
 
     public ITypeDefOrRef GetBaseType(ITypeDefOrRef type)
     {
         if (_baseTypes.TryGetValue(type, out var baseType))
-        {
             return baseType;
-        }
         else
-        {
             return _baseTypes[type] = type.GetBaseType();
-        }
-
     }
 
     private static List<AssemblyDef> LoadAssemblies(ModuleContext context, string[] lst)

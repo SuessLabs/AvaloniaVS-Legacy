@@ -55,6 +55,7 @@ internal class TypeWrapper : ITypeInformation
     {
         if (type == null)
             throw new ArgumentNullException();
+
         _type = type;
         _session = session;
         AssemblyQualifiedName = type.DefinitionAssembly is null
@@ -63,9 +64,13 @@ internal class TypeWrapper : ITypeInformation
     }
 
     public string FullName => _type.FullName;
+
     public string Name => _type.Name;
+
     public string AssemblyQualifiedName { get; }
+
     public string Namespace => _type.Namespace;
+
     public ITypeInformation? GetBaseType() => FromDef(_session.GetTypeDef(_session.GetBaseType(_type)), _session);
 
     public IEnumerable<IEventInformation> Events => _type.Events.Select(e => new EventWrapper(e));
@@ -82,12 +87,19 @@ internal class TypeWrapper : ITypeInformation
         // Filter property overrides
         .Where(p => !p.Name.Contains("."))
         .Select(p => new PropertyWrapper(p));
+
     public bool IsEnum => _type.IsEnum;
+
     public bool IsStatic => _type.IsAbstract && _type.IsSealed;
+
     public bool IsInterface => _type.IsInterface;
+
     public bool IsPublic => _type.IsPublic;
+
     public bool IsGeneric => _type.HasGenericParameters;
+
     public bool IsAbstract => _type.IsAbstract && !_type.IsSealed;
+
     public bool IsInternal => _type.IsNotPublic && !_type.IsNestedPrivate;
 
     public IEnumerable<string> EnumValues
@@ -136,6 +148,7 @@ internal class TypeWrapper : ITypeInformation
             var attributes = _type.CustomAttributes
                 .Where(a => a.TypeFullName.EndsWith("TemplatePartAttribute", StringComparison.OrdinalIgnoreCase)
                     && a.HasConstructorArguments);
+
             foreach (var attr in attributes)
             {
                 var name = attr.ConstructorArguments[0].Value.ToString()!;
@@ -193,17 +206,11 @@ internal class PropertyWrapper : IPropertyInformation
 
         TypeSig? type = default;
         if (getMethod is not null)
-        {
             type = getMethod.ReturnType;
-        }
         else if (setMethod is not null)
-        {
             type = setMethod.Parameters[setMethod.IsStatic ? 0 : 1].Type;
-        }
         else
-        {
             throw new InvalidOperationException("Property without a type was found.");
-        }
 
         TypeFullName = type.FullName;
         QualifiedTypeFullName = type.DefinitionAssembly is null
@@ -222,9 +229,7 @@ internal class PropertyWrapper : IPropertyInformation
                 if (property.DeclaringType.DefinitionAssembly is AssemblyDef assembly)
                 {
                     if (string.Equals(targetAssembly.AssemblyName, assembly.GetFullNameWithPublicKeyToken(), StringComparison.OrdinalIgnoreCase))
-                    {
                         return true;
-                    }
 
                     var enumerator = assembly.GetVisibleTo()?.GetEnumerator();
                     var targetPublicKey = targetAssembly.PublicKey;
@@ -241,31 +246,29 @@ internal class PropertyWrapper : IPropertyInformation
                                 {
                                     startIndex += 9;
                                     if (startIndex > current.Length)
-                                    {
                                         return false;
-                                    }
+
                                     while (startIndex < current.Length && current[startIndex] is ' ' or '=')
                                     {
                                         startIndex++;
                                     }
 
                                     if (targetPublicKey.Length != current.Length - startIndex)
-                                    {
                                         return false;
-                                    }
+
                                     for (int i = startIndex; i < current.Length; i++)
                                     {
                                         if (current[i] != targetPublicKey[i - startIndex])
-                                        {
                                             return false;
-                                        }
                                     }
                                 }
                             }
+
                             return true;
                         }
                     }
                 }
+
                 return false;
             };
         }
@@ -297,6 +300,7 @@ internal class FieldWrapper : IFieldInformation
         QualifiedTypeFullName = f.FieldType.DefinitionAssembly is null
             ? f.FieldType.FullName
             : $"{f.FieldType.FullName}, {f.FieldType.DefinitionAssembly.Name}";
+
         bool isRoutedEvent = false;
         ITypeDefOrRef t = f.FieldType.ToTypeDefOrRef();
         while (t != null)
@@ -306,6 +310,7 @@ internal class FieldWrapper : IFieldInformation
                 isRoutedEvent = true;
                 break;
             }
+
             t = session.GetBaseType(t);
         }
 
@@ -340,8 +345,11 @@ internal class EventWrapper : IEventInformation
     public string Name { get; }
 
     public string TypeFullName { get; }
+
     public string QualifiedTypeFullName { get; }
+
     public bool IsPublic { get; }
+
     public bool IsInternal { get; }
 }
 
