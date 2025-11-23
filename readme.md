@@ -1,6 +1,6 @@
-# Legacy Avalonia AXAML Viewer Visual Studio Extension
+# Avalonia AXAML Viewer Visual Studio Extension (Based on Legacy)
 
-Yes, the same Avalonia GUI Previewer and syntax highlighter that you've grown to love under the MIT license.
+Yes, the same Avalonia GUI Previewer and syntax highlighter that you've grown to love under the MIT license,  _**free and open source!**_
 
 <center><img width="495" height="523" alt="image" src="https://github.com/user-attachments/assets/ad3d429d-8d64-4d75-894c-f7487b830ca5" /></center>
 
@@ -9,7 +9,7 @@ The fork preserves the legacy Avalonia Visual Studio Extension at git hash, `7bf
 > For the latest ground-breaking features, use the official [AvaloniaVS extension](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS).
 >
 > This fork is intended for those who need a simple visual designer for Avalonia. For instance, those creating simple apps or sandboxing Avalonia. _**We encourage you to support the official tooling.**_
-> 
+>
 > _This project is an independent derivative of Avalonia technology and is not endorsed by AvaloniaUI OÜ._
 
 [![2022 marketplace](https://img.shields.io/visual-studio-marketplace/v/SuessLabs.Avalonia-Lite-VS.svg?label=2022-Marketplace)](https://marketplace.visualstudio.com/items?itemName=SuessLabs.Avalonia-Lite-VS)
@@ -38,9 +38,14 @@ Avalonia Visual Studio extension adds such capabilities to your Visual Studio:
 - It bundles Avalonia templates in your Visual Studio.
 - Icons for axaml files.
 
+## Updates
+
+2025-11-23 - Unhiding the share "Anonymous Usage Analytics" checkbox. Disabled on the backend
+2025-11-20 - Better auto-completion
+
 ### VSIX packages for Visual Studio
 
-[Avalonia for Visual Studio 2022](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaVS)
+[![2026 marketplace](https://img.shields.io/visual-studio-marketplace/v/SuessLabs.Avalonia-Lite-VS.svg?label=2026-Marketplace)](https://marketplace.visualstudio.com/items?itemName=SuessLabs.Avalonia-Lite-VS)
 
 For VS2017 and VS2019 you need to download another plugin [Avalonia for Visual Studio 2019](https://marketplace.visualstudio.com/items?itemName=AvaloniaTeam.AvaloniaforVisualStudio)
 
@@ -48,6 +53,11 @@ For VS2017 and VS2019 you need to download another plugin [Avalonia for Visual S
 - Latest Release supporting VS2017 is **11.2**
 
 If you are interested in VSCode extension, visit https://github.com/AvaloniaUI/AvaloniaVSCode.
+
+
+## Updates
+
+* 2025-11-20 - Better auto-completion
 
 ## Debugging
 
