@@ -56,22 +56,41 @@ namespace AvaloniaVS.Shared.SuggestedActions
                 ISuggestedAction suggestedAction = null;
                 if (availableSuggestedActions.Item1)
                 {
-                    suggestedAction = new MissingNamespaceAndAliasSuggestedAction(trackingSpan, _diffFactory, _diffBufferFactory, _bufferFactory, _textEditorFactoryService,
-    metadata.CompletionMetadata.InverseNamespace, CompletionEngine.GetNamespaceAliases(extent.Span.Snapshot.TextBuffer.CurrentSnapshot.GetText()));
+                    suggestedAction = new MissingNamespaceAndAliasSuggestedAction(
+                        trackingSpan,
+                        _diffFactory,
+                        _diffBufferFactory,
+                        _bufferFactory,
+                        _textEditorFactoryService,
+                        metadata.CompletionMetadata.InverseNamespace,
+                        CompletionEngine.GetNamespaceAliases(extent.Span.Snapshot.TextBuffer.CurrentSnapshot.GetText()));
                 }
                 else if (availableSuggestedActions.Item2)
                 {
-                    suggestedAction = new MissingAliasSuggestedAction(trackingSpan, _diffFactory, _diffBufferFactory, _bufferFactory, _textEditorFactoryService,
-    metadata.CompletionMetadata.InverseNamespace);
+                    suggestedAction = new MissingAliasSuggestedAction(
+                        trackingSpan,
+                        _diffFactory,
+                        _diffBufferFactory,
+                        _bufferFactory,
+                        _textEditorFactoryService,
+                        metadata.CompletionMetadata.InverseNamespace);
                 }
                 else if (availableSuggestedActions.Item3)
                 {
                     HasAlias(out var alias);
-                    suggestedAction = new MissingNamespaceSuggestedAction(trackingSpan, _diffFactory, _diffBufferFactory, _bufferFactory, _textEditorFactoryService,
-    metadata.CompletionMetadata.InverseNamespace, CompletionEngine.GetNamespaceAliases(extent.Span.Snapshot.TextBuffer.CurrentSnapshot.GetText()), alias);
+                    suggestedAction = new MissingNamespaceSuggestedAction(
+                        trackingSpan,
+                        _diffFactory,
+                        _diffBufferFactory,
+                        _bufferFactory,
+                        _textEditorFactoryService,
+                        metadata.CompletionMetadata.InverseNamespace,
+                        CompletionEngine.GetNamespaceAliases(extent.Span.Snapshot.TextBuffer.CurrentSnapshot.GetText()), alias);
                 }
+
                 return new SuggestedActionSet[] { new SuggestedActionSet(new ISuggestedAction[] { suggestedAction }) };
             }
+
             return Enumerable.Empty<SuggestedActionSet>();
         }
 
@@ -113,7 +132,6 @@ namespace AvaloniaVS.Shared.SuggestedActions
             return true;
         }
 
-
         /// <returns>
         /// This method returns 3 bool values. First one defines whether MissingNamespaceAndAliasSuggestedAction should be applied
         /// Second one defines whether MissingAliasSuggestedAction should be applied.
@@ -131,6 +149,7 @@ namespace AvaloniaVS.Shared.SuggestedActions
                 {
                     return (false, false, false);
                 }
+
                 var targetClassMetadata = metadata.CompletionMetadata.InverseNamespace.FirstOrDefault(x => x.Key.Split('.').Last() == targetClassName);
 
                 // Exclude all classes from avaloniaui namespace because controls from this namespace are included by default.
@@ -152,8 +171,8 @@ namespace AvaloniaVS.Shared.SuggestedActions
                         return (false, true, false);
                     }
                 }
-
             }
+
             return (false, false, false);
         }
 
@@ -174,6 +193,7 @@ namespace AvaloniaVS.Shared.SuggestedActions
                     return true;
                 }
             }
+
             alias = null;
             return false;
         }
