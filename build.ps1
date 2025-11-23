@@ -2,11 +2,6 @@
 
 Write-Output "Cleaning output folders..."
 
-if (Test-Path -Path "AvaloniaVS.VS2022\bin")
-{
-  Remove-Item AvaloniaVS.VS2022\bin\* -Recurse -Force
-}
-
 if (Test-Path -Path "output\")
 {
   Remove-Item output\* -Recurse -Force
@@ -41,4 +36,4 @@ else
   New-Item -Path '.\publish' -ItemType Directory
 }
 
-Move-Item -Path .\output\Release\AvaloniaVS.VS2022.vsix -Destination .\publish\AvaloniaVS.VS2022.vsix
+Move-Item -Path .\output\Release\AvaloniaVS.VisualEditor.vsix -Destination .\publish\AvaloniaVS.VisualEditor.vsix
