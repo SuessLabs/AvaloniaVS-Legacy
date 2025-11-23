@@ -78,18 +78,26 @@
                 ItemsSource="{Binding Source={x:Type serilog:LogEventLevel}, Converter={StaticResource EnumValues}}"
                 SelectedItem="{Binding MinimumLogVerbosity, Mode=TwoWay}" />
 
-      <!--
-      <TextBlock Text="Anonymous Usage Analytics:" Grid.Column="0" Grid.Row="8" VerticalAlignment="Top" />
-      <CheckBox VerticalAlignment="Center" Grid.Column="2" Grid.Row="8"
-           IsChecked="{Binding UsageTracking, Mode=TwoWay}">Enabled</CheckBox>
-      -->
+      <TextBlock Text="Anonymous Usage Analytics:"
+                 Grid.Row="8"
+                 Grid.Column="0"
+                 VerticalAlignment="Top" />
+      <CheckBox Grid.Row="8"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                IsChecked="{Binding UsageTracking, Mode=TwoWay}">
+        Enabled
+      </CheckBox>
     </Grid>
 
+    <TextBlock Text="The anonymous analytics is currently not linked up on the backend, though the above checkbox remains. No PII, source code, or any sensitive material is ever collected."
+               FontSize="13"
+               TextWrapping="Wrap" />
+
     <!--
-    <TextBlock
-      FontSize="13"
-      Text="Support the improvement of the Avalonia Visual Studio extension by sharing anonymous usage data. No PII, source code, or any sensitive material is ever collected."
-      TextWrapping="Wrap" />
+    <TextBlock Text="Support the improvement of the extension by sharing anonymous usage data. No PII, source code, or any sensitive material is ever collected."
+               FontSize="13"
+               TextWrapping="Wrap" />
     -->
   </StackPanel>
 </UserControl>
