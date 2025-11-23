@@ -15,6 +15,7 @@
     <File Path="Props/NetAnalyzers.props" />
     <File Path="Props/NullableEnable.props" />
     <File Path="Props/TrimmingEnable.props" />
+    <File Path="Settings.XamlStyler" />
   </Folder>
   <Folder Name="/templates/">
     <Project Path="templates/ProjectTemplatesDownloader/ProjectTemplatesDownloader.csproj" />
