@@ -52,6 +52,8 @@ namespace AvaloniaVS.Shared.Services
             if (!_enabled || _dte == null)
                 return;
 
+            // 2025-11-23: Forcably disabling analytics for now
+            /*
             await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
 
             var payload = AvaloniaExtentionLoadedAnalyticsPayload.Initialise(
@@ -71,6 +73,7 @@ namespace AvaloniaVS.Shared.Services
                     Debug.WriteLine($"Failed to SweepAndSendAsync: {ex}");
                 }
             });
+            */
         }
 
         private async Task<string> GetVersionAsync()

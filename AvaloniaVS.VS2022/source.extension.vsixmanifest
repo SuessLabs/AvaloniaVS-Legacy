@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="AvaloniaVS-Lite" Version="11.9.1.5" Language="en-US" Publisher="Suess Labs" />
+        <Identity Id="AvaloniaVS-Lite" Version="11.9.1.6" Language="en-US" Publisher="Suess Labs" />
         <DisplayName>AXAML Viewer</DisplayName>
-        <Description xml:space="preserve">Legacy Avalonia previewer and templates for AXAML and XAML files (vs2022 and vs2026).</Description>
+        <Description xml:space="preserve">Avalonia previewer and templates for AXAML and XAML files (vs2022 and vs2026), based on the legacy extension.</Description>
         <License>license.md</License>
         <Icon>icon.ico</Icon>
     </Metadata>
