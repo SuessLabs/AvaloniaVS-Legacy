@@ -54,11 +54,6 @@ For VS2017 and VS2019 you need to download another plugin [Avalonia for Visual S
 
 If you are interested in VSCode extension, visit https://github.com/AvaloniaUI/AvaloniaVSCode.
 
-
-## Updates
-
-* 2025-11-20 - Better auto-completion
-
 ## Debugging
 
 If you want to debug Avalonia previewer extension the *easiest* way to do that is [VS Experimental instance](https://docs.microsoft.com/en-us/visualstudio/extensibility/the-experimental-instance?view=vs-2019).
