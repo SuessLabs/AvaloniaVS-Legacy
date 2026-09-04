@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -123,8 +123,8 @@ namespace AvaloniaVS.Views
 
         private double GetScaling()
         {
-            var result = (Process?.Scaling ?? 1) / VisualTreeHelper.GetDpi(this).DpiScaleX;
-            return result > 0 ? result : 1;
+            return NormalizeScaling(
+                (Process?.Scaling ?? 1) / VisualTreeHelper.GetDpi(this).DpiScaleX);
         }
 
         private async void Update(object sender, EventArgs e)
@@ -170,9 +170,12 @@ namespace AvaloniaVS.Views
                     previewScroller.Visibility = Visibility.Visible;
                 }
 
-                var fullScaling = scaling * Process.Scaling;
-                var hScale = preview.Width * 2 / fullScaling;
-                var vScale = preview.Height * 2 / fullScaling;
+                var processScaling = NormalizeScaling(Process.Scaling);
+                var fullScaling = scaling * processScaling;
+
+                var hScale = NormalizeSize(preview.Width * 2 / fullScaling);
+                var vScale = NormalizeSize(preview.Height * 2 / fullScaling);
+
                 previewGrid.Margin = new Thickness(hScale, vScale, hScale, vScale);
 
                 // The bitmap size only changes if
@@ -328,37 +331,49 @@ namespace AvaloniaVS.Views
         }
 
         ScrollBar? _horizontalScroll;
-        ScrollBar _verticalScroll;
+        ScrollBar? _verticalScroll;
         Size? _lastSize = default;
+
         public Size GetViewportSize(int padding)
         {
             if (_lastSize is null)
             {
                 var height = previewScroller.ActualHeight;
                 var width = previewScroller.ActualWidth;
+
                 if (previewScroller.ComputedHorizontalScrollBarVisibility == Visibility.Visible)
                 {
-                    if (_horizontalScroll is null)
-                    {
-                        _horizontalScroll = previewScroller.FindDescendants<ScrollBar>()
-                            .First(b => b.Orientation == Orientation.Horizontal);
-                    }
-                    height -= _horizontalScroll.Height;
+                    _horizontalScroll ??= previewScroller
+                        .FindDescendants<ScrollBar>()
+                        .First(b => b.Orientation == Orientation.Horizontal);
+
+                    height -= _horizontalScroll.ActualHeight;
                 }
+
                 if (previewScroller.ComputedVerticalScrollBarVisibility == Visibility.Visible)
                 {
-                    if (_verticalScroll == null)
-                    {
-                        _verticalScroll = previewScroller.FindDescendants<ScrollBar>()
-                            .First(b => b.Orientation == Orientation.Vertical);
-                    }
-                    width -= _verticalScroll.Width;
+                    _verticalScroll ??= previewScroller
+                        .FindDescendants<ScrollBar>()
+                        .First(b => b.Orientation == Orientation.Vertical);
+
+                    width -= _verticalScroll.ActualWidth;
                 }
-                _lastSize = new(width - padding * 2, height - padding * 2);
+
+                _lastSize = new Size(
+                    NormalizeSize(width - padding * 2),
+                    NormalizeSize(height - padding * 2));
             }
+
             return _lastSize.Value;
         }
 
+        private static double NormalizeScaling(double value) =>
+            double.IsNaN(value) ||
+                   double.IsInfinity(value) ||
+                   value <= 0 ? 1 : value;
 
+        private static double NormalizeSize(double value) =>
+          double.IsNaN(value) || double.IsInfinity(value) || value < 0 ? 0 : value;
     }
+
 }
